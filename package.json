@@ -1,0 +1,31 @@
+{
+  "name": "pickles",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "stop": "forever stopall",
+    "test": "node scripts/flush_db && nyc --reporter=html mocha",
+    "start:api": "DEBUG=* forever start server.js",
+    "start:ui": "forever start node_modules/.bin/http-server ui"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "debug": "^3.0.1",
+    "forever": "^0.15.3",
+    "fs-extra": "^4.0.1",
+    "http-server": "^0.10.0",
+    "lodash": "^4.17.4",
+    "qs": "6.2.0",
+    "restify": "4.3.0",
+    "supertest": "^3.0.0",
+    "swagger-restify": "^1.0.1"
+  },
+  "devDependencies": {
+    "istanbul": "^0.4.5",
+    "assert": "^1.4.1",
+    "mocha": "^3.5.2",
+    "nyc": "^11.2.1"
+  }
+}
