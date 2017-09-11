@@ -41,7 +41,7 @@ module.exports = (server) => {
 
         /**
          * @swagger
-         * path: /
+         * path: /drivers
          * operations:
          *   -  httpMethod: GET
          *      summary: Get all drivers
@@ -77,7 +77,7 @@ module.exports = (server) => {
 
         /**
          * @swagger
-         * path: /
+         * path: /drivers
          * operations:
          *   -  httpMethod: POST
          *      summary: Create a driver
@@ -88,24 +88,24 @@ module.exports = (server) => {
          *      parameters:
          *        - name: name
          *          description: The driver name
-         *          paramType: body
+         *          paramType: form
          *          required: true
-         *          dataType: string
+         *          dataType: String
          *        - name: email
          *          description: The driver email
-         *          paramType: body
+         *          paramType: form
          *          required: true
-         *          dataType: string
+         *          dataType: String
          *        - name: lat
          *          description: The driver latitude
-         *          paramType: body
+         *          paramType: form
          *          required: true
-         *          dataType: string
+         *          dataType: String
          *        - name: lng
          *          description: The driver longitude
-         *          paramType: body
+         *          paramType: form
          *          required: true
-         *          dataType: string
+         *          dataType: String
          */
         server
             .post({
@@ -129,7 +129,7 @@ module.exports = (server) => {
 
         /**
          * @swagger
-         * path: /{id}
+         * path: /drivers/{id}
          * operations:
          *   -  httpMethod: GET
          *      summary: Get driver by ID
@@ -141,7 +141,7 @@ module.exports = (server) => {
          *      parameters:
          *        - name: id
          *          in: path
-         *          description: ID from the driver to get
+         *          description: Driver ID
          *          paramType: integer
          *          required: true
          */
@@ -157,7 +157,7 @@ module.exports = (server) => {
 
         /**
          * @swagger
-         * path: /{id}
+         * path: /drivers/{id}
          * operations:
          *   -  httpMethod: DELETE
          *      summary: Delete a driver by ID
@@ -169,7 +169,7 @@ module.exports = (server) => {
          *      parameters:
          *        - name: id
          *          in: path
-         *          description: ID from the driver to delete
+         *          description: Driver ID
          *          paramType: integer
          *          required: true
          */

@@ -8,8 +8,8 @@ module.exports = (server) => {
             swagger.init(server, {
                 swaggerVersion: '2.0',
                 swaggerJSON: '/docs.json',
-                swaggerUI: '/', // Unfortunately this is obligatory
-                basePath: '/',
+                swaggerUI: '/',
+                basePath: `http://localhost:${process.env.PORT || 3005}/`,
                 info: {
                     version: '1.0',
                     title: 'Pickles API',

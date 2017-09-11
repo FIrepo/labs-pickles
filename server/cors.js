@@ -29,7 +29,7 @@ module.exports = (server) => {
 
             // Ensure only requests containing "Accept: application/json" headers
             server.use((req, res, next) => {
-                if (req.xhr || req.headers['accept'] == 'application/json') {
+                if (req.xhr || req.headers['accept'].indexOf('application/json') > -1) {
                     next();
                 } else {
                     return res.send(new restify.errors.MethodNotAllowedError((typeof err != 'undefined' ? err : "Method not allowed")))

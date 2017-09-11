@@ -101,7 +101,7 @@ class Utils {
      * @param {object|array} data
      */
     jsonResponse(res, data) {
-        return res.send({ status: 1, data: data || false, at: (new Date()) });
+        return res.send({ status: 1, data: data || {}, at: (new Date()) });
     }
 }
 
