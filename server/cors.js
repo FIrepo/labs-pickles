@@ -29,8 +29,8 @@ module.exports = (server) => {
 
             // Ensure only requests containing "Accept: application/json" headers
             server.use((req, res, next) => {
-                if (req.xhr || req.headers['accept'].indexOf('application/json') > -1) {
-                    next();
+                if (req.xhr || req.headers.hasOwnProperty('accept') && req.headers['accept'].indexOf('application/json') > -1) {
+                    return next();
                 } else {
                     return res.send(new restify.errors.MethodNotAllowedError((typeof err != 'undefined' ? err : "Method not allowed")))
                 }
@@ -38,6 +38,7 @@ module.exports = (server) => {
 
             resolve(server);
         } catch(ERR) {
+            debug(ERR);
             reject(ERR);
         }
     })

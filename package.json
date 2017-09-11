@@ -6,11 +6,13 @@
   "scripts": {
     "stop": "forever stopall",
     "start": "run-p start:*",
-    "test": "NODE_ENV=test node scripts/flush_db && NODE_ENV=test nyc --reporter=html mocha",
+    "build": "run-p build:*",
+    "build:ui": "cd ui && yarn build",
     "start:api": "DEBUG=* forever start bin/www.js",
     "start:coverage": "forever start ./node_modules/.bin/http-server -p8081 coverage",
     "start:ui": "forever start ./node_modules/.bin/http-server -p8082 ui/build",
-    "start:swagger": "forever start ./node_modules/.bin/http-server -p8082 swagger"
+    "start:swagger": "forever start ./node_modules/.bin/http-server -p8082 swagger",
+    "test": "NODE_ENV=test node scripts/flush_db && NODE_ENV=test nyc --reporter=html mocha"
   },
   "author": "Alexandre Moraes",
   "license": "ISC",
