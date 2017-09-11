@@ -5,11 +5,14 @@
   "main": "server.js",
   "scripts": {
     "stop": "forever stopall",
+    "start": "run-p start:*",
     "test": "NODE_ENV=test node scripts/flush_db && NODE_ENV=test nyc --reporter=html mocha",
-    "start:api": "DEBUG=* forever start server.js",
-    "start:ui": "forever start node_modules/.bin/http-server ui"
+    "start:api": "DEBUG=* forever start bin/www.js",
+    "start:coverage": "forever start ./node_modules/.bin/http-server -p8081 coverage",
+    "start:ui": "forever start ./node_modules/.bin/http-server -p8082 ui/build",
+    "start:swagger": "forever start ./node_modules/.bin/http-server -p8082 swagger"
   },
-  "author": "",
+  "author": "Alexandre Moraes",
   "license": "ISC",
   "dependencies": {
     "debug": "^3.0.1",
@@ -19,12 +22,13 @@
     "lodash": "^4.17.4",
     "qs": "6.2.0",
     "restify": "4.3.0",
-    "supertest": "^3.0.0",
     "swagger-restify": "^1.0.1"
   },
   "devDependencies": {
-    "istanbul": "^0.4.5",
+    "supertest": "^3.0.0",
+    "npm-run-all": "^4.1.1",
     "assert": "^1.4.1",
+    "istanbul": "^0.4.5",
     "mocha": "^3.5.2",
     "nyc": "^11.2.1"
   }
