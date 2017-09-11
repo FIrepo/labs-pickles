@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "stop": "forever stopall",
-    "test": "node scripts/flush_db && nyc --reporter=html mocha",
+    "test": "NODE_ENV=test node scripts/flush_db && NODE_ENV=test nyc --reporter=html mocha",
     "start:api": "DEBUG=* forever start server.js",
     "start:ui": "forever start node_modules/.bin/http-server ui"
   },

@@ -95,7 +95,7 @@ module.exports = {
             try {
                 dbase = await loadDatabase();
                 drivers = dbase.drivers.table.filter((d) => {
-                    return Utils.distanceBetweenCoordinates(lat, lng, d.lat, d.lng, 'K') <= 2
+                    return Utils.distanceBetweenCoordinates(lat, lng, d.lat, d.lng) <= 2
                 });
                 resolve(drivers);
             } catch(ERR) {

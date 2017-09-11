@@ -1,21 +1,6 @@
 {
     "drivers": {
-        "index": 2,
-        "table": [
-            {
-                "name": "João",
-                "email": "joao@gmail.com",
-                "lat": "48.858357",
-                "lng": "2.348363",
-                "id": 1
-            },
-            {
-                "name": "João",
-                "email": "joao@gmail.comz",
-                "lat": "48.856165",
-                "lng": "2.345917",
-                "id": 2
-            }
-        ]
+        "index": 3,
+        "table": []
     }
 }

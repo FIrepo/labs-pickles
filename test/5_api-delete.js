@@ -6,11 +6,26 @@ const
 
 describe('DELETE /drivers/{id}', () => {
     
-    it('Deleting a driver should return Status: 1', (done) => {
+    it('Deleting a driver with id=1 should return Status: 1', (done) => {
         require('../server/app')()
             .then(async (app) => {
                 request(app)
                     .delete(`/drivers/1`)
+                    .set('Accept', 'application/json')
+                    .expect((res) => {
+                        res.body = { status: res.body.status }
+                    })
+                    .expect(200, {
+                        status: 1
+                    }, done);
+            });
+    });
+
+    it('Deleting a driver with id=2 should return Status: 1', (done) => {
+        require('../server/app')()
+            .then(async (app) => {
+                request(app)
+                    .delete(`/drivers/2`)
                     .set('Accept', 'application/json')
                     .expect((res) => {
                         res.body = { status: res.body.status }
