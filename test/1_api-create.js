@@ -92,8 +92,8 @@ describe('POST /drivers', () => {
                     .set('Accept', 'application/json')
                     .field('name', 'Johnsons Bar')
                     .field('email', 'john@gmail.com')
-                    .field('lat', '48.858357')
-                    .field('lng', '2.348363')
+                    .field('lat', '48.856165')
+                    .field('lng', '2.345917')
                     .expect((res) => {
                         res.body = { message: res.body.message }
                     })

@@ -1,7 +1,7 @@
 const
     request = require('supertest');
 
-describe('GET /drivers', function () {
+describe('GET', function () {
     
     it('Making a request without using Accept: application/json should return 405', function (done) {
         require('../server/app')()

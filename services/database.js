@@ -17,6 +17,11 @@ async function loadDatabase() {
 
 const Utils = new utils();
 
+/**
+ * Database service
+ * 
+ * @author Alexandre Moraes | alcmoraes89@gmail.com
+ */
 module.exports = {
     /**
      * Find by id.
