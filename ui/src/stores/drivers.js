@@ -50,6 +50,8 @@ class DriversStore {
     handleFetchDriversFromCoordinates() {
         this.drivers = [];
         this.from_coordinates = false;
+        this.driver_form_msg = false;
+        this.goto = false;
     }
 
     handleSetDrivers(options) {
