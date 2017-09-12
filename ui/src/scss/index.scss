@@ -8,10 +8,6 @@
 // Wow
 @import 'wow.js/css/libs/animate';
 
-// Sections 
-// Drivers sidebar
-@import "sections/drivers_tab.scss";
-
 .well {
     border-radius: 0;
 }
@@ -91,5 +87,82 @@ input[type="text"], input[type="search"] {
         .text-muted {
             float: none!important;
         }
+    }
+}
+
+.drivers-wrapper {
+    overflow-y: scroll;
+    width: 30%;
+    z-index: 1000;
+    position: fixed;
+    top: 0;
+    height: 100%;
+    right: 0;
+    background: rgba(255, 255, 255, .9);
+    box-shadow: 0px 0px 20px rgba(0,0,0, .5);
+    .col-lg-6 {
+        margin-bottom: 10px;
+    }
+    .drivers-form {
+        button {
+            width: 100%;
+        }
+        .alert {
+            margin-top: 10px;
+            margin-bottom: 0;
+            padding: 3px 5px;
+            border-radius: 0;
+        }
+    }
+    .close-btn {
+        position: fixed;
+        top: 10px;
+        right: 10px;
+        border-radius: 50px;
+        @media #{$desktop} {
+            border: none;
+            background: transparent;
+        }
+        @media #{$mobile} {
+            right: 30px;
+            top: auto;
+            bottom: 30px;
+            height: 58px;
+            line-height: 51px;
+            font-size: 30px;
+        }
+    }
+    .drivers-list {
+        overflow-y: scroll;
+        max-height: auto;
+        ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            li {
+                &:first-child {
+                    border-top: solid 1px #F4F4F4;
+                }
+                i {
+                    top: 3px;
+                    color: #ccc;
+                }
+                padding: 5px 10px;
+                background: white;
+                color: #333;
+                border-bottom: solid 1px #F4F4F4;
+            }
+        }
+    }
+    @media #{$mobile} {
+        bottom: 0;
+        top: auto;
+        left: 0;
+        height: 100%;
+        width: 100%;
+    }
+    @media #{$desktop} {
+        min-width: 400px;
+        padding-top: 50px;    
     }
 }
