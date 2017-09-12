@@ -1,6 +1,5 @@
 const
     debug = require('debug')('PICKLES:ENDPOINTS:DRIVERS'),
-    Q = require('q'),
     path = require('path'),
     _ = require('lodash'),
     utils = require('./utils'),

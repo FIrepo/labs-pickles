@@ -1,6 +1,5 @@
 const
     debug = require('debug')('PICKLES:ENDPOINTS:DRIVERS'),
-    Q = require('q'),
     _ = require('lodash'),
     restify = require('restify'),
     database = require('../services/database'),
