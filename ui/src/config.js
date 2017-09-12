@@ -2,7 +2,7 @@
 export let Paths = {
     to: {
         api: {
-            endpoint: 'http://localhost:3005',
+            endpoint: 'http://pickles.api.doisbit.com',
             drivers: "/drivers",
             driver: "/drivers/:id"
         }
