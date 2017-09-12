@@ -1,0 +1,14 @@
+version: '3'
+services:
+    pickles:
+        restart: "always"
+        container_name: "pickles"
+        tty: true
+        build: ./
+        networks:
+            - doisbit
+        volumes:           
+            - ./:/var/www
+networks:
+    doisbit:
+        external: true

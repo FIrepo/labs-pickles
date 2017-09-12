@@ -42,11 +42,11 @@
 
     <script type="text/javascript">
         $(function () {
-            var url = "http://localhost:3005/docs.json";
+            var url = "http://pickles.api.doisbit.com/docs.json";
 
             window.swaggerUi = new SwaggerUi({
                 url: url,
-                host: 'http://localhost:3005',
+                host: 'http://pickles.api.doisbit.com',
                 dom_id: "swagger-ui-container",
                 supportedSubmitMethods: ['get', 'post', 'put', 'delete', 'patch'],
                 onComplete: function (swaggerApi, swaggerUi) {

@@ -9,7 +9,7 @@ module.exports = (server) => {
                 swaggerVersion: '2.0',
                 swaggerJSON: '/docs.json',
                 swaggerUI: '/',
-                basePath: `http://localhost:${process.env.PORT || 3005}/`,
+                basePath: `http://pickles.api.doisbit.com/`,
                 info: {
                     version: '1.0',
                     title: 'Pickles API',
