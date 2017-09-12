@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { withGoogleMap, GoogleMap, Marker } from "react-google-maps";
 
 export let Map = withGoogleMap(props => {
@@ -10,7 +10,7 @@ export let Map = withGoogleMap(props => {
         defaultCenter: { lat: 48.8829551, lng: 2.2485991 }
     };
 
-    if(props.longitude && props.latitude) options.center = { lat: props.latitude, lng: props.longitude };
+    if (props.longitude && props.latitude) options.center = new window.google.maps.LatLng(props.latitude, props.longitude);
         return (
             <GoogleMap {...options}>
                 {props.drivers ? props.drivers.map((driver, i) => {

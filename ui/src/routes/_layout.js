@@ -5,13 +5,10 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
 import CommonsStore from '../stores/commons';
-import CommonsActions from '../actions/commons';
 import MapsStore from '../stores/maps';
 import MapsActions from '../actions/maps';
 import DriversStore from '../stores/drivers';
 import DriversActions from '../actions/drivers';
-
-import NProgress from 'nprogress/nprogress';
 
 import { Events } from '../utils';
 
@@ -51,9 +48,8 @@ class Layout extends Component {
 	}
 
 	clearAddress() {
+		MapsActions.clearAddress();
 		this.refs['search_by_address'].value = "";
-		DriversActions.fetchDrivers();
-		this.setState({ address: false, from_coordinates: false });
 	}
 	
 	componentDidMount() {
@@ -68,7 +64,8 @@ class Layout extends Component {
 		DriversStore.unlisten(this.onChange);
 	}
 	onChange(state) {
-		if (state.hasOwnProperty('address')) {
+		if (state.hasOwnProperty('address') || state.hasOwnProperty('goto')) {
+			if(state.hasOwnProperty('address') && state.address) state.goto = false;
 			state.center_map = true;
 		} else {
 			state.center_map = false;
@@ -77,6 +74,23 @@ class Layout extends Component {
 	}
 
 	render() {
+		let map_options = {
+			drivers: this.state.drivers || [],
+			containerElement: (<div className="map_container wow fadeIn" />),
+			mapElement: (<div className= "map_wrapper" />)
+		}
+
+		// If address is set. Center map.
+		if(this.state.address && this.state.center_map) {
+			map_options.latitude = this.state.address.geometry.location.lat;
+			map_options.longitude = this.state.address.geometry.location.lng;
+		}
+
+		if (this.state.goto && this.state.center_map) {
+			map_options.latitude = this.state.goto.lat;
+			map_options.longitude = this.state.goto.lng;
+		}
+
 		return (
 			<div className="app_wrapper">
 				{/* START: Navbar */}
@@ -103,9 +117,9 @@ class Layout extends Component {
 								</ul>
 								<ul className="nav navbar-nav navbar-right">
 									<li>
-										<form className="navbar-form" role="search">
+										<div className="navbar-form" role="search">
 											<div className="input-group">
-												<input disabled={this.state.address ? true : false} ref="search_by_address" className="form-control" placeholder="Address search" />
+												<input disabled={this.state.address} type="search" ref="search_by_address" className="form-control" placeholder="Address search" />
 												<div className="input-group-btn">
 													{!this.state.address ? (
 														<button onClick={this.fetchAddress} className="btn btn-default" type="button"><i className="glyphicon glyphicon-search"></i></button>
@@ -113,7 +127,7 @@ class Layout extends Component {
 													}
 												</div>
 											</div>
-										</form>
+										</div>
 									</li>
 								</ul>
 							</div>
@@ -159,17 +173,7 @@ class Layout extends Component {
 				: null}
 				{/* END: Dialog */}
 				{/* START: Map */}
-				<Map
-					latitude={this.state.address && this.state.center_map ? this.state.address.geometry.location.lat : false}
-					longitude={this.state.address && this.state.center_map ? this.state.address.geometry.location.lng : false}
-					drivers={this.state.drivers || []}
-					containerElement={
-						<div className="map_container wow fadeIn" />
-					}
-					mapElement={
-						<div className="map_wrapper" />
-					}
-				/>
+				<Map {...map_options}/>
 				{/* END: Map */}
 				{/* START: Routes */}
 				{this.props.children}

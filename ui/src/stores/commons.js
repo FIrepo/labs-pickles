@@ -1,8 +1,7 @@
+// @flow
+
 import Alt from '../vendors/alt';
-
 import NProgress from 'nprogress/nprogress';
-
-
 import CommonsActions from '../actions/commons';
 
 class CommonsStore {
@@ -24,9 +23,9 @@ class CommonsStore {
         
     }
 
-    showSnack(options) {
+    showSnack(message) {
         NProgress.done();
-        this.snack = {...{open: true}, ...options};
+        this.snack = {...{open: true, message: message}};
     }
 
     dismissSnack(options) {

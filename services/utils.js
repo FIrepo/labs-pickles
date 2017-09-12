@@ -56,7 +56,7 @@ class Utils {
         return new Promise(async (resolve, reject) => {
             if(!Object.keys(body).length) return resolve(body);
             Object.keys(parameters).map((k)=> {
-                if(!body.hasOwnProperty(k)) return reject(`Attribute missing: ${k}`);
+                if(!body.hasOwnProperty(k) || !body[k].length) return reject(`Attribute missing: ${k}`);
                 if(typeof body[k] !== parameters[k]) return reject(`Invalid format for ${k}. Expected ${parameters[k]}.`);
             });
             resolve(body);

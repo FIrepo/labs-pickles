@@ -1,10 +1,10 @@
 import { Paths } from './config';
-
 import Wow from 'wow.js';
+import _ from 'lodash';
 
-const HEADERS = new Headers({
-    "Accept": "application/json",
-});
+const HEADERS = {
+    "Accept": "application/json"
+}
 
 export let Api = {
     get: (url, base) => {
@@ -12,7 +12,7 @@ export let Api = {
             try {
                 let data = await fetch((base || Paths.to.api.endpoint) + url, {
                     method: 'GET',
-                    headers: HEADERS,
+                    headers: new Headers(HEADERS),
                     mode: 'cors',
                     cache: 'default'
                 });
@@ -27,7 +27,7 @@ export let Api = {
             try {
                 let data = await fetch((base || Paths.to.api.endpoint) + url, {
                     method: 'DELETE',
-                    headers: HEADERS,
+                    headers: new Headers(HEADERS),
                     mode: 'cors',
                     cache: 'default'
                 });
@@ -37,15 +37,13 @@ export let Api = {
             }
         });
     },
-    put: (url, data, base) => {
+    put: (url, body, base) => {
         return new Promise(async (resolve, reject) => {
             try {
-                var payload = new FormData();
-                payload.append("json", JSON.stringify(data));
                 let data = await fetch((base || Paths.to.api.endpoint) + url, {
                     method: 'PUT',
-                    headers: HEADERS,
-                    body: payload,
+                    headers: new Headers(_.merge(_.clone(HEADERS), { 'Content-Type': 'application/json' })),
+                    body: JSON.stringify(body),
                     mode: 'cors',
                     cache: 'default'
                 });
@@ -55,20 +53,19 @@ export let Api = {
             }
         });
     },
-    post: (url, data, base) => {
+    post: (url, body, base) => {
         return new Promise(async (resolve, reject) => {
             try {
-                var payload = new FormData();
-                payload.append("json", JSON.stringify(data));
                 let data = await fetch((base || Paths.to.api.endpoint) + url, {
                     method: 'POST',
-                    headers: HEADERS,
-                    body: payload,
+                    headers: new Headers(_.merge(_.clone(HEADERS), {'Content-Type': 'application/json'})),
+                    body: JSON.stringify(body),
                     mode: 'cors',
                     cache: 'default'
                 });
                 resolve(data.json());
             } catch (err) {
+                console.log(err);
                 reject(err);
             }
         });

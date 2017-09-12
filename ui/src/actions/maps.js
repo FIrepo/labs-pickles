@@ -20,17 +20,26 @@ class MapsActions {
             NProgress.start();
             Api.get(`?address=${encodeURIComponent(address)}&key=${Maps.key}`, Maps.endpoints.geocode)
             .then((data) => {
-                if (data.results.length) {
-                    NProgress.done();
+                NProgress.done();
+                if (data.status && data.results.length) {
                     this.setAddress(data.results[0]);
                 } else {
+                    if (!data.status) CommonsActions.showSnack(data.message);
                     this.setAddress(false);
                 }
             })
             .catch((err) => {
+                NProgress.done();
                 console.log(err);
-                CommonsActions.openDialog({ title: err.message, content: "There was an error loading your board. Please contact the administrator" });
+                CommonsActions.showSnack(err.message);
             });
+        }
+    }
+
+    clearAddress() {
+        return (dispatch) => {
+            dispatch();
+            DriversActions.fetchDrivers();
         }
     }
 
