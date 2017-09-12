@@ -4,6 +4,28 @@ Pickles is a food delivery startup. In order for our dishes to be delivered in t
 
 The goal of this exercise is to create an API and a UI consuming the API.
 
+A live version can be accessed at `http://pickles.doisbit.com`
+
+## Requirements
+
+- Node >= 6
+
+## Installation
+
+1. Clone the repository and execute the `npm i` command on the following directories: `./` and `./ui`
+2. Build the UI by accessing `./ui` and executing `npm run build`
+3. Build the coverage UI by executing `npm run test`
+4. Run the servers by executing `npm start`
+
+## Servers
+
+In order to run this project it's important to have those ports available.
+
+- The coverage UI will be available at `http://localhost:8081`
+- The swagger explorer UI will be available at `http://localhost:8083`
+- The main API will be available at `http://localhost:3005`
+- The main UI will be available at `http://localhost:8082`
+
 ## API 
 
 The API should be written in NodeJS (ExpressJs, HapiJs, etc.) or PHP. The API endpoints are:
