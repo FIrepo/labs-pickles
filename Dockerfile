@@ -6,7 +6,7 @@ RUN npm i -g forever --progress=false --loglevel=error
 
 RUN npm i
 
-RUN cd ui && npm i
+RUN cd /var/www/ui && npm i
 
 RUN mkdir -p /var/www
 
