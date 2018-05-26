@@ -1,5 +1,7 @@
 # Fullstack Remote Challenge Pickles
 
+[![Code Climate](https://codeclimate.com/github/alcmoraes/labs-pickles/badges/gpa.svg)](https://codeclimate.com/github/alcmoraes/labs-pickles)
+
 Pickles is a food delivery startup. In order for our dishes to be delivered in the best conditions, we want to create a delivery dispatching system based on the geolocalized position of our drivers.
 
 The goal of this exercise is to create an API and a UI consuming the API.
